@@ -6,5 +6,5 @@ type Product struct {
 	Quantity int32
 	Iva      int32
 	ValIva   float32
-	impo     float32
+	Impo     float32
 }

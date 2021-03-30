@@ -1,15 +1,22 @@
 package src
 
-import "github.com/ctabares06/go-builder/src/builders"
+import (
+	"github.com/ctabares06/go-builder/src/builders"
+	"github.com/ctabares06/go-builder/src/objects"
+)
 
 type InvoiceDirector struct {
-	builder *builders.InvoiceBuilder
+	builder builders.InvoiceBuilder
 }
 
-func (i *InvoiceDirector) SetBuilder(builder *builders.InvoiceBuilder) {
+func (i *InvoiceDirector) SetBuilder(builder builders.InvoiceBuilder) {
 	i.builder = builder
 }
 
-func (i *InvoiceDirector) BuildInvoice() {
-
+func (i *InvoiceDirector) BuildInvoice() objects.ElectronicInvoice {
+	i.builder.SetCompany()
+	i.builder.SetDates()
+	i.builder.SetProducts()
+	i.builder.SetTaxes()
+	return i.builder.GetInvoice()
 }
